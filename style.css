@@ -799,3 +799,205 @@ body {
     width: 20px !important;
     border-radius: 6px !important;
 }
+
+
+
+
+.pwa-banner {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 15, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.pwa-banner.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pwa-card {
+    background: linear-gradient(160deg, #131a2b 0%, #0d1320 100%);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    border-radius: 28px;
+    padding: 32px 24px 24px;
+    text-align: center;
+    max-width: 340px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 80px rgba(59, 130, 246, 0.15);
+    transform: translateY(30px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    overflow: hidden;
+}
+
+.pwa-banner.show .pwa-card {
+    transform: translateY(0) scale(1);
+}
+
+.pwa-card::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    background: conic-gradient(from 0deg,
+        transparent 0deg,
+        rgba(59, 130, 246, 0.25) 90deg,
+        transparent 180deg,
+        rgba(6, 182, 212, 0.25) 270deg,
+        transparent 360deg);
+    animation: pwaRotate 6s linear infinite;
+    z-index: 0;
+}
+
+.pwa-card::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: linear-gradient(160deg, #131a2b 0%, #0d1320 100%);
+    border-radius: 26px;
+    z-index: 1;
+}
+
+.pwa-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes pwaRotate {
+    to { transform: rotate(360deg); }
+}
+
+.pwa-logo-wrap {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 18px;
+    border-radius: 28px;
+    padding: 4px;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5), 0 0 40px rgba(6, 182, 212, 0.3);
+    animation: pwaFloat 3s ease-in-out infinite;
+    position: relative;
+}
+
+.pwa-logo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4, #3b82f6);
+    filter: blur(12px);
+    opacity: 0.6;
+    z-index: -1;
+    animation: pwaGlow 2.5s ease-in-out infinite alternate;
+}
+
+.pwa-logo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+    background: #0d1320;
+}
+
+@keyframes pwaFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pwaGlow {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.85; }
+}
+
+.pwa-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #edf2f7;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+
+.pwa-subtitle {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.pwa-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.pwa-benefit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    color: #cbd5e1;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 9px 12px;
+    border-radius: 12px;
+}
+
+.pwa-benefit i {
+    color: #06b6d4;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.pwa-download-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.45);
+    transition: transform 0.2s ease;
+    margin-bottom: 10px;
+}
+
+.pwa-download-btn:active {
+    transform: scale(0.96);
+}
+
+.pwa-later-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 40px;
+    background: transparent;
+    color: #94a3b8;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.pwa-later-btn:active {
+    background: rgba(148, 163, 184, 0.1);
+}
