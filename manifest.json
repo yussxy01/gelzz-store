@@ -1,1 +1,33 @@
 
+{
+  "name": "GelzzStore",
+  "short_name": "GelzzStore",
+  "description": "GelzzStore - Toko digital terpercaya",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0f1a",
+  "theme_color": "#3b82f6",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "image/logo/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "image/logo/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "image/logo/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    }
+  ]
+}
