@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Web Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="status-bar">
+            <div class="menu-btn" id="menuBtn"><i class="ri-menu-line"></i></div>
+            <div class="store-name-header" id="storeNameHeader">STORE</div>
+            <div class="placeholder-icon"></div>
+        </div>
+
+        <main class="main-content" id="mainContent"></main>
+
+        <div class="cart-badge" id="cartBadge">
+            <i class="ri-shopping-cart-2-line"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <div class="product-detail-modal" id="productDetailModal">
+            <div class="modal-content">
+                <div class="modal-handle"></div>
+                <div id="detailContent"></div>
+                <button class="modal-close" id="closeDetail">Tutup</button>
+            </div>
+        </div>
+
+        <div class="payment-modal" id="paymentModal">
+            <div class="modal-content">
+                <div class="modal-handle"></div>
+                <div id="paymentContent"></div>
+                <button class="modal-close" id="closePayment">Tutup</button>
+            </div>
+        </div>
+
+        <div class="menu-sidebar" id="menuSidebar">
+            <div class="sidebar-inner">
+                <div class="sidebar-header">
+                    <h3>Menu</h3>
+                    <i class="ri-close-line" id="closeMenu"></i>
+                </div>
+                <div class="menu-item" data-nav="home"><i class="ri-home-4-line"></i> Beranda</div>
+                <div class="menu-item" data-nav="cart"><i class="ri-shopping-cart-2-line"></i> Keranjang</div>
+                <div class="menu-item" data-nav="guide"><i class="ri-book-open-line"></i> Panduan</div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
