@@ -655,6 +655,70 @@ function initModals() {
     }
 }
 
+
+
+
+function showPwaBanner() {
+    if (document.getElementById("pwaBanner")) return;
+
+    const banner = document.createElement("div");
+    banner.className = "pwa-banner";
+    banner.id = "pwaBanner";
+    banner.innerHTML = `
+        <div class="pwa-card">
+            <div class="pwa-logo-wrap">
+                <img src="${CONFIG.avatar}" alt="GelzzStore" onerror="this.src='image/logo/logo.jpg'">
+            </div>
+            <div class="pwa-title">GelzzStore</div>
+            <div class="pwa-subtitle">Install aplikasi untuk pengalaman terbaik & akses lebih cepat</div>
+            <div class="pwa-benefits">
+                <div class="pwa-benefit"><i class="ri-flashlight-line"></i> Akses super cepat tanpa browser</div>
+                <div class="pwa-benefit"><i class="ri-wifi-off-line"></i> Bisa dibuka offline</div>
+                <div class="pwa-benefit"><i class="ri-notification-3-line"></i> Update promo langsung</div>
+            </div>
+            <button class="pwa-download-btn" id="pwaDownloadBtn">
+                <i class="ri-download-2-line"></i> Download Aplikasi
+            </button>
+            <button class="pwa-later-btn" id="pwaLaterBtn">Nanti Saja</button>
+        </div>
+    `;
+    document.body.appendChild(banner);
+
+    requestAnimationFrame(() => banner.classList.add("show"));
+
+    document.getElementById("pwaLaterBtn").onclick = () => {
+        banner.classList.remove("show");
+        setTimeout(() => banner.remove(), 400);
+        try { localStorage.setItem("pwa_banner_dismissed", "1"); } catch (e) {}
+    };
+
+    document.getElementById("pwaDownloadBtn").onclick = async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === "accepted") {
+                showToast("Aplikasi berhasil di-install!");
+            }
+            deferredPrompt = null;
+            banner.classList.remove("show");
+            setTimeout(() => banner.remove(), 400);
+        } else {
+            showToast("Buka menu browser → 'Add to Home Screen'");
+        }
+    };
+}
+
+window.addEventListener("load", () => {
+    let dismissed = false;
+    try { dismissed = localStorage.getItem("pwa_banner_dismissed") === "1"; } catch (e) {}
+    if (!dismissed && !window.matchMedia("(display-mode: standalone)").matches) {
+        setTimeout(showPwaBanner, 800);
+    }
+});
+
+
+
+
 document.getElementById("storeNameHeader").innerText = CONFIG.storeName;
 renderHome();
 initMenu();
